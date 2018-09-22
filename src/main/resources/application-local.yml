@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/elastic_sample
+    username: postgres
+    password: postgres
+  data:
+    elasticsearch:
+      cluster-nodes: localhost:9300

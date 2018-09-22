@@ -1,0 +1,50 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.5.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'io.frispace.index'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	lombokVersion = '1.18.2'
+	jacksonVersion = '2.9.5'
+}
+
+dependencies {
+	//SPRING STARTER
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+	compile('org.springframework.boot:spring-boot-starter-web')
+
+	//DATABASE ORM
+	compile('org.flywaydb:flyway-core')
+	runtime('org.postgresql:postgresql')
+
+	//JACKSON
+	compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+	compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
+
+	compile("org.projectlombok:lombok:$lombokVersion")
+
+	//TEST
+	testCompile('com.h2database:h2')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
