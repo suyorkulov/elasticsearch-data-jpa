@@ -10,6 +10,5 @@ import javax.validation.constraints.Size;
 @Data
 public class DeveloperSearchRequestDto {
 
-    @Size(min = 3)
-    private String text;
+    private String text = "";
 }
